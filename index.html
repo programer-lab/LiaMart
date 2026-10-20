@@ -3,130 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Seblak Prasmanan Lia - Belendung</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Seblak Prasmanan Lia - Belendung | Pedesnya Nampol</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*{font-family:'Poppins',sans-serif;box-sizing:border-box;margin:0}
-body{background:#fff7ed;padding-bottom:90px}
-header{background:linear-gradient(135deg,#dc2626,#ef4444);color:white;padding:22px 15px;text-align:center;border-radius:0 0 20px 20px}
-header h1{font-size:22px}
-header p{font-size:13px;opacity:0.9;margin-top:4px}
-.badge{background:#fde047;color:#000;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-top:8px;display:inline-block}
-.container{padding:12px}
-.card{background:white;border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
-.card h3{color:#dc2626;font-size:15px;margin-bottom:10px}
-.topping{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed #eee}
-.topping:last-child{border:0}
-.left b{font-size:13px}
-.left span{font-size:11px;color:#888;display:block}
-.price{color:#16a34a;font-weight:700;font-size:13px}
-.qty{display:flex;align-items:center;gap:8px}
-.qty button{width:28px;height:28px;border-radius:50%;border:1px solid #dc2626;background:white;color:#dc2626;font-weight:700}
-.qty button:active{background:#dc2626;color:white}
-.levels{display:flex;gap:8px;flex-wrap:wrap}
-.level{padding:8px 14px;border-radius:20px;border:1px solid #ddd;font-size:13px;background:#fff}
-.level.active{background:#dc2626;color:white;border-color:#dc2626}
-.cart{position:fixed;bottom:0;left:0;right:0;background:white;padding:12px 15px;box-shadow:0 -4px 20px rgba(0,0,0,0.1);border-radius:16px 16px 0 0;display:flex;justify-content:space-between;align-items:center}
-.cart b{font-size:14px}
-.cart small{display:block;font-size:11px;color:#666}
-.btn-checkout{background:#25D366;color:white;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:700;font-size:14px}
-.maps{font-size:12px;color:#3b82f6;text-decoration:none}
+:root{--merah:#D91424;--kuning:#FFC300;--hitam:#1a1a1a;--putih:#FFF8F0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--putih);color:var(--hitam)}
+h1,h2,h3{font-family:'Poppins',sans-serif}
+.header{background:var(--merah);color:white;padding:12px 16px;position:sticky;top:0;z-index:99;display:flex;justify-content:space-between;align-items:center}
+.header b{font-size:18px}
+.badge{background:var(--kuning);color:var(--hitam);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700}
+.hero{padding:24px 16px;background:linear-gradient(180deg, #fff 0%, #FFF0D6 100%);text-align:center;border-bottom:3px dashed var(--merah)}
+.hero h1{font-size:28px;line-height:1.1;color:var(--merah)}
+.hero p{margin-top:8px;color:#555;font-size:14px}
+.menu{padding:16px;display:grid;gap:12px}
+.card{background:white;border:2px solid #222;border-radius:16px;padding:12px;display:flex;gap:12px;box-shadow:4px 4px 0 #222}
+.card img{width:80px;height:80px;border-radius:12px;object-fit:cover;background:#eee}
+.card-info{flex:1}
+.card-info h3{font-size:16px}
+.card-info p{font-size:12px;color:#666;margin:2px 0 8px}
+.price{font-weight:700;color:var(--merah)}
+.btn-tambah{border:2px solid #222;background:var(--kuning);border-radius:10px;padding:6px 14px;font-weight:700;box-shadow:2px 2px 0 #222}
+.cart{position:fixed;bottom:0;left:0;right:0;background:white;border-top:3px solid #222;padding:12px 16px;border-radius:20px 20px 0 0;box-shadow:0 -10px 30px rgba(0,0,0,.1)}
+.cart-top{display:flex;justify-content:space-between;font-weight:700;margin-bottom:10px}
+.btn-wa{width:100%;background:var(--merah);color:white;border:2px solid #222;border-radius:12px;padding:14px;font-size:16px;font-weight:700;box-shadow:3px 3px 0 #222}
+.small{font-size:11px;color:#777;text-align:center;margin-top:8px}
 </style>
 </head>
 <body>
 
-<header>
-<h1>🔥 SEBLAK PRASMANAN LIA</h1>
-<p>Belendung, Benda - Tangerang</p>
-<div class="badge">BUKA 11.00 - 22.00 WIB</div>
-</header>
-
-<div class="container">
-
-<div class="card">
-<h3>🍗 Pilih Topping</h3>
-<div id="list-topping"></div>
+<div class="header">
+<b>SEBLAK LIA.</b>
+<span class="badge">BUKA • BELENDUNG</span>
 </div>
 
-<div class="card">
-<h3>🌶️ Level Pedas</h3>
-<div class="levels" id="level-list">
-<div class="level active" data-level="Level 1 - Gak Pedas">Level 1</div>
-<div class="level" data-level="Level 2 - Sedang">Level 2</div>
-<div class="level" data-level="Level 3 - Pedas">Level 3 🔥</div>
-<div class="level" data-level="Level 5 - Nampol">Level 5 🔥🔥🔥</div>
-</div>
+<div class="hero">
+<h1>PEDESNYA<br>NAMPOL BOS!</h1>
+<p>Seblak Prasmanan Asli Benda, Tangerang. Porsi Kuli, Harga Santri.<br><b>Lokasi: Belendung RT 03 - Buka 10:00-21:00</b></p>
 </div>
 
-<div class="card">
-<h3>📍 Lokasi</h3>
-<p style="font-size:13px">Dine In & Take Away, bisa pesan via WA dulu biar gak antri</p>
-<a class="maps" href="https://maps.app.goo.gl/HK6f6X6gQP41oJnU6" target="_blank">📍 Buka Google Maps - Rute ke Warung -></a>
-</div>
-
+<div class="menu" id="menuList">
+<!-- GANTI FOTO & HARGA DISINI AJA -->
 </div>
 
 <div class="cart">
-<div>
-<b id="total">Rp 0</b>
-<small id="count">0 item dipilih</small>
+<div class="cart-top">
+<span id="totalItem">0 Item</span>
+<span id="totalHarga">Rp 0</span>
 </div>
-<a id="wa-btn" class="btn-checkout" href="#">Pesan WA</a>
+<button class="btn-wa" onclick="pesanWA()">PESAN VIA WHATSAPP →</button>
+<div class="small">Ganti No WA di kode: cari 085697287693 | Ganti foto di postimages.org</div>
 </div>
 
 <script>
-const toppings=[
-{name:"Ceker Ayam",price:3000,desc:"Favorit"},
-{name:"Tulang Ayam",price:5000,desc:"Gurih"},
-{name:"Sosis",price:2000,desc:"1 pcs"},
-{name:"Bakso",price:2000,desc:"1 pcs"},
-{name:"Telur",price:3000,desc:"1 butir"},
-{name:"Mie Keriting",price:3000,desc:""},
-{name:"Kwetiaw",price:3000,desc:""},
-{name:"Kerupuk Seblak",price:2000,desc:"Wajib"},
-{name:"Jamur Enoki",price:4000,desc:"Viral"},
-{name:"Sawi",price:2000,desc:""}
+const WA_NUMBER = "6285697287693"; // GANTI NOMOR WA DISINI
+const menus = [
+  {nama:"Seblak Original", harga:10000, desc:"Kerupuk + Mie + Sawi", foto:"https://i.imgur.com/8Km9tLL.jpg"},
+  {nama:"Seblak Ceker (3)", harga:15000, desc:"Paling laku! Ceker empuk", foto:"https://i.imgur.com/QkJv1zW.jpg"},
+  {nama:"Seblak Komplit", harga:18000, desc:"Ceker, Bakso, Sosis, Telur", foto:"https://i.imgur.com/8Km9tLL.jpg"},
+  {nama:"Topping Bakso (3)", harga:5000, desc:"Bakso sapi", foto:"https://i.imgur.com/QkJv1zW.jpg"},
+  {nama:"Topping Sosis", harga:3000, desc:"Sosis ayam", foto:"https://i.imgur.com/QkJv1zW.jpg"},
 ];
-let cart={};
-let selectedLevel="Level 1 - Gak Pedas";
-const list=document.getElementById('list-topping');
-toppings.forEach((t,i)=>{
-  const div=document.createElement('div');
-  div.className='topping';
-  div.innerHTML=`<div class="left"><b>${t.name}</b><span>${t.desc} - Rp ${t.price.toLocaleString('id-ID')}</span></div>
-  <div class="qty"><button onclick="ubah(${i},-1)">-</button><span id="q${i}">0</span><button onclick="ubah(${i},1)">+</button></div>`;
-  list.appendChild(div);
-  cart[i]=0;
+let cart = [];
+const list = document.getElementById('menuList');
+menus.forEach((m,i)=>{
+  list.innerHTML += `<div class="card">
+    <img src="${m.foto}" onerror="this.src='https://via.placeholder.com/80'">
+    <div class="card-info">
+      <h3>${m.nama}</h3>
+      <p>${m.desc}</p>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="price">Rp ${m.harga.toLocaleString('id-ID')}</span>
+        <button class="btn-tambah" onclick="tambah(${i})">+ Tambah</button>
+      </div>
+    </div>
+  </div>`;
 });
-function ubah(i,d){
-  cart[i]=Math.max(0,cart[i]+d);
-  document.getElementById('q'+i).innerText=cart[i];
-  hitung();
+function tambah(i){
+  cart.push(menus[i]);
+  updateCart();
 }
-document.querySelectorAll('.level').forEach(l=>{
-  l.onclick=()=>{
-    document.querySelectorAll('.level').forEach(x=>x.classList.remove('active'));
-    l.classList.add('active');
-    selectedLevel=l.dataset.level;
-    hitung();
-  }
-});
-function hitung(){
-  let total=0,items=[],count=0;
-  for(let i in cart){
-    if(cart[i]>0){
-      total+=cart[i]*toppings[i].price;
-      items.push(`${toppings[i].name} x${cart[i]}`);
-      count+=cart[i];
-    }
-  }
-  document.getElementById('total').innerText='Rp '+total.toLocaleString('id-ID');
-  document.getElementById('count').innerText=count+' item dipilih | '+selectedLevel;
-  let pesan=`Halo%20kak%20Lia%20Seblak%20Prasmanan%20%F0%9F%94%A5%0A%0AMau%20pesan%3A%0A${items.join('%0A- ').replace(/ /g,'%20')}%0A%0A${selectedLevel.replace(/ /g,'%20')}%0ATotal%3A%20Rp%20${total.toLocaleString('id-ID')}%0A%0ALokasi%20antar%2Fambil%3A%20`;
-  if(items.length==0) pesan=`Halo%20kak%20Lia%20mau%20tanya%20seblak%20prasmanan%20dong`;
-  document.getElementById('wa-btn').href=`https://wa.me/6285697287693?text=${items.length?'- '+pesan:pesan}`;
+function updateCart(){
+  let total = cart.reduce((a,b)=>a+b.harga,0);
+  document.getElementById('totalItem').innerText = cart.length + " Item";
+  document.getElementById('totalHarga').innerText = "Rp " + total.toLocaleString('id-ID');
 }
-hitung();
+function pesanWA(){
+  if(cart.length==0){alert("Pilih seblak dulu bos!");return}
+  let total = cart.reduce((a,b)=>a+b.harga,0);
+  let pesan = `Halo LiaMart, saya mau pesan:%0A`;
+  cart.forEach(c=>{pesan+=`- ${c.nama} (Rp ${c.harga})%0A`});
+  pesan+=`%0ATotal: Rp ${total}%0ALokasi saya: (share loc)`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${pesan}`,'_blank');
+}
 </script>
 </body>
 </html>
